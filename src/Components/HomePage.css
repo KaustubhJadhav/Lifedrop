@@ -1,0 +1,61 @@
+.statistics-section .stats {
+    display: flex;
+    justify-content: space-around;
+  }
+.statistics-section {
+    background-color: rgb(43, 41, 41);
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .footer-section {
+    background-color: #262626;
+    color: white;
+    padding: 10px;
+    padding-bottom: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: px;
+  }
+  
+  .footer-links, .social-media {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .footer-links a, .social-media a {
+    list-style-type: none;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+  }
+  .footer-links a:hover, .social-media a:hover {
+    list-style-type: none;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    /* font-size: 20px; */
+  }
+
+  .card {
+    background-color: #272727; /* Dark background for card */
+    color: white;
+  }
+.homepage-container {
+    background-color: black; /* Black background */
+    color: white; /* White text for contrast */
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+    /* text-align: center; */
+  }
+
+.container-rounded {
+    border-radius: 1.5rem; /* Adjust the radius as needed */
+    overflow: hidden; /* Ensures content inside the rounded container doesn't overflow */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); Optional: adds a subtle shadow */
+}

@@ -1,0 +1,23 @@
+/* MainDashboard.css */
+
+.container {
+    max-width: 1200px; /* Adjust the width as needed */
+  }
+  
+  h2 {
+    color: #007bff; /* Primary color for the title */
+  }
+  
+  .list-group-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .mt-4 {
+    margin-top: 2rem !important;
+  }
+  
+  .mb-4 {
+    margin-bottom: 2rem !important;
+  }
+  

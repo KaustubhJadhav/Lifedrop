@@ -1,0 +1,40 @@
+nav,ul{
+    display: flex;
+}
+li{
+    list-style-type: none;
+    /* padding-left: 59px;
+    padding-right: 0px; */
+}
+ul{
+    gap: 34px;
+    /* padding-left: 80px; */
+}
+nav{
+    background-color: rgb(27, 26, 26);
+    padding: 225px;
+    position: sticky;
+    overflow: hidden;
+    transition: 0.5s;
+    font-size: 18px;
+    height: 8vh;
+    
+}
+
+nav:hover{
+    height: 10vh;
+    font-size: 20px;
+    color: red;
+
+}
+
+.navbar-links li a {
+    list-style-type: none;
+    display: flex;
+    /* gap: 1.5rem; */
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    
+  }

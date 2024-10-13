@@ -1,0 +1,25 @@
+.notifications-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .notification {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+  }
+  
+  .notification.unread {
+    border-left: 5px solid #007bff;
+  }
+  
+  .notification.read {
+    border-left: 5px solid #ddd;
+  }
+  
