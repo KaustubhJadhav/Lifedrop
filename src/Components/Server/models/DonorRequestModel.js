@@ -38,10 +38,12 @@ const DonorRequestSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    status: { type: String, enum: ['pending', 'accepted', 'rejected'], default: 'pending' }, // New status field
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    acceptedAt: { type: Date }
 });
 
 const DonorRequestModel = mongoose.model("DonorRequest", DonorRequestSchema);

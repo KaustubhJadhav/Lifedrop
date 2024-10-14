@@ -218,7 +218,9 @@ app.post('/request-blood', async (req, res) => {
       donorLocation: donorData.location, // Donor's location
       userName: userData.name, // User's name
       userEmail: userData.email, // User's email
-      userPhoneNo: userData.phoneNo // User's phone number
+      userPhoneNo: userData.phoneNo, // User's phone number
+      status: 'pending',
+      
     });
 
     // Save the request to the database
@@ -229,94 +231,115 @@ app.post('/request-blood', async (req, res) => {
   }
 });
 
-// DELETE blood request by ID
-// const mongoose = require('mongoose');
 
-// Delete route
+// Add this route to handle blood requests for a specific user
+app.get('/blood-requests', async (req, res) => {
+  try {
+    // Check if the user is authenticated
+    if (!req.session.user) {
+      return res.status(401).json({ message: "User not authenticated" });
+    }
 
+    const userName = req.query.userName; // Get the userName from query parameters
 
-// Corrected Delete route
+    // Fetch requests made by the user
+    const requests = await DonorRequestModel.find({ userName });
+
+    // Return the requests to the client
+    res.json(requests);
+  } catch (error) {
+    console.error('Error fetching blood requests:', error); // Improved error logging
+    res.status(500).json({ message: "Error fetching blood requests", error: error.message });
+  }
+});
+
+// Delete request
 app.delete('/request/:id', async (req, res) => {
   try {
     const requestId = req.params.id;
 
     // Convert requestId to ObjectId
     const objectId = new mongoose.Types.ObjectId(requestId);
-    console.log("object id: " + objectId);
-    console.log("Request ID received: ", req.params.id);
+    console.log('Rejecting request with ID:', requestId); // Debugging
 
-    // Delete from the Request collection, not AcceptedRequest
-    const deletedRequest = await Request.findByIdAndDelete(objectId);
+    // Update the status of the request to 'rejected'
+    const result = await DonorRequestModel.updateOne(
+      { _id: objectId },
+      {
+        $set: {
+          status: 'rejected',
+          rejectedAt: Date.now(),  // Optional: Track when the request was rejected
+        },
+      }
+    );
 
-    if (!deletedRequest) {
-      console.log('Request not found.');
-      return res.status(404).send({ message: 'Request not found.' });
+    // Check if the update was successful
+    if (result.nModified === 0) {
+      console.log('Request not found or already updated'); // Debugging
+      return res.status(404).send({ message: 'Request not found or already updated.' });
     }
 
-    console.log('Request deleted successfully.');
-    res.status(200).send({ message: 'Request deleted successfully.' });
+    console.log('Request marked as rejected successfully'); // Debugging
+    res.status(200).send({ message: 'Request marked as rejected successfully.' });
   } catch (error) {
-    console.error('Error deleting request:', error);
-    res.status(500).send({ message: 'Internal Server Error' });
+    console.error('Error marking request as rejected:', error); // Improved error logging
+    res.status(500).send({ message: 'Internal Server Error', error: error.message });
   }
 });
-
 
 
 
 // POST accept request (move to acceptedRequests collection)
-
-
 app.post('/accept-request/:id', async (req, res) => {
   try {
     const requestId = req.params.id;
-    console.log("Check: " + requestId);
-    const request = await Request.findById(requestId);
-    if (!request) {
-      return res.status(404).send({ message: 'Request not found.' });
+
+    // Convert requestId to ObjectId
+    const objectId = new mongoose.Types.ObjectId(requestId);
+    console.log('Accepting request with ID:', requestId);  // Debugging
+
+    // Update the status of the request to 'accepted'
+    const result = await DonorRequestModel.updateOne(
+      { _id: objectId },
+      {
+        $set: {
+          status: 'accepted',
+          acceptedAt: Date.now(),  // Track when the request was accepted
+        },
+      }
+    );
+
+    // Check if the update was successful
+    if (result.nModified === 0) {
+      console.log('Request not found or already updated');  // Debugging
+      return res.status(404).send({ message: 'Request not found or already updated.' });
     }
 
-    const acceptedRequest = new AcceptedRequest({
-      donorName: request.donorName,
-      donorEmail: request.donorEmail,
-      donorPhoneNo: request.donorPhoneNo,
-      donorLocation: request.donorLocation,
-      userName: request.userName, // Assuming the request has userName
-      userEmail: request.userEmail, // Assuming the request has userName
-      userPhoneNo: request.userPhoneNo, // Assuming the request has userPhoneNo
-      createdAt: request.createdAt,
-      acceptedAt: Date.now(),
-    });
-
-    // Save the accepted request to the database
-    await acceptedRequest.save();
-
-    // Delete the original request from donorrequests collection
-    await Request.findByIdAndDelete(requestId);
-
-    // Send a success response
+    console.log('Request accepted successfully');  // Debugging
     res.status(200).send({ message: 'Request accepted successfully.' });
   } catch (error) {
-    console.error('Error accepting request:', error); // Enhanced logging
-    res.status(500).send({ message: 'Error accepting request.', error: error.message }); // Send error message
+    console.error('Error accepting request:', error);  // Improved error logging
+    res.status(500).send({ message: 'Error accepting request.', error: error.message });
   }
 });
-
-
 
 
 
 app.get('/accepted-requests', async (req, res) => {
   try {
-    const donorName = req.query.donorName; // Extract donorName from query params
-
-    if (!donorName) {
-      return res.status(400).send({ message: 'Donor name is required' });
+    // Check if user is authenticated
+    if (!req.session.user) {
+      return res.status(401).send({ message: 'User not authenticated' });
     }
 
+    const donorName = req.session.user.name; // Assuming the donor's name is stored in session
+
     // Fetch only accepted requests for the logged-in donor
-    const acceptedRequests = await AcceptedRequest.find({ donorName });
-    
+    const acceptedRequests = await Request.find({
+      donorName: donorName,
+      status: 'accepted' // Only fetch requests with the status 'accepted'
+    });
+
     if (acceptedRequests.length === 0) {
       return res.status(404).send({ message: 'No accepted requests found for this donor.' });
     }
@@ -327,6 +350,7 @@ app.get('/accepted-requests', async (req, res) => {
     res.status(500).send({ message: 'Error fetching accepted requests' });
   }
 });
+
 
 
 
