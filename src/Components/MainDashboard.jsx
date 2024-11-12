@@ -1,15 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import { UserContext } from './UserContext'; // Import UserContext to access user data
-import './MainDashboard.css'; // Custom styles for MainDashboard
+import { UserContext } from './UserContext'; 
+import './MainDashboard.css'; 
 
 const MainDashboard = () => {
-  const { user, setUser } = useContext(UserContext); // Get user data from UserContext
+  const { user, setUser } = useContext(UserContext); 
   const [notifications, setNotifications] = useState([]);
-  const [acceptedRequests, setAcceptedRequests] = useState([]); // State for accepted requests
-  const [userRequests, setUserRequests] = useState([]); // State for user's own requests
-  const [loading, setLoading] = useState(true); // Loading state
-  const [fetchError, setFetchError] = useState(''); // Error state for fetching
+  const [acceptedRequests, setAcceptedRequests] = useState([]); 
+  const [userRequests, setUserRequests] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [fetchError, setFetchError] = useState(''); 
 
   useEffect(() => {
     if (!user) {
@@ -32,12 +32,10 @@ const MainDashboard = () => {
   }, [user, setUser]);
 
   const fetchDashboardData = (username) => {
-    // Fetch notifications
     axios.get('http://localhost:3001/notifications', { withCredentials: true })
       .then(response => setNotifications(response.data))
       .catch(error => console.error('Error fetching notifications:', error));
 
-    // Fetch accepted requests
     axios.get('http://localhost:3001/accepted-requests', {
       params: { donorName: username },
       withCredentials: true
@@ -45,25 +43,23 @@ const MainDashboard = () => {
     .then(response => setAcceptedRequests(response.data))
     .catch(error => console.error('Error fetching accepted requests:', error));
 
-    // Fetch user's blood requests directly based on username
     axios.get('http://localhost:3001/blood-requests', {
-      params: { userName: username }, // Adjust the endpoint and params as per your backend
+      params: { userName: username }, 
       withCredentials: true
     })
     .then(response => {
-      // Filter the requests to only those made by the current user
       const filteredRequests = response.data.filter(request => request.userName === username);
-      setUserRequests(filteredRequests); // Set filtered user requests directly
+      setUserRequests(filteredRequests); 
     })
     .catch(error => console.error('Error fetching user requests:', error));
   };
 
   const handleEmailContact = (email) => {
-    window.location.href = `mailto:${email}`; // Open email client with pre-filled email address
+    window.location.href = `mailto:${email}`; 
   };
 
   const handleWhatsAppContact = (phoneNumber) => {
-    window.open(`https://wa.me/${phoneNumber}`, '_blank'); // Open WhatsApp chat
+    window.open(`https://wa.me/${phoneNumber}`, '_blank'); 
   };
 
   const getCardClass = (status) => {
@@ -75,7 +71,7 @@ const MainDashboard = () => {
       case 'rejected':
         return 'bg-dark';
       default:
-        return 'bg-secondary'; // Default class for undefined statuses
+        return 'bg-secondary'; 
     }
   };
 
@@ -95,7 +91,6 @@ const MainDashboard = () => {
             <h2 className="mb-4">Main Dashboard</h2>
 
             <div className="row">
-              {/* Notification Summary Section */}
               <div className="col-md-3">
                 <h4>Notification Summary</h4>
                 <ul className="list-group">
@@ -111,7 +106,6 @@ const MainDashboard = () => {
                 </ul>
               </div>
 
-              {/* Accepted Requests Section */}
               <div className="col-md-4">
                 <h4>Blood Requests You Accepted:</h4>
                 <div className="col">
@@ -143,7 +137,6 @@ const MainDashboard = () => {
                 </div>
               </div>
 
-              {/* Your Blood Requests Status Section */}
               <div className="col-md-3">
                 <h4>Your Blood Requests Status:</h4>
                 <div className="col">

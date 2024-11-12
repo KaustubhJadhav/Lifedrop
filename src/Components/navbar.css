@@ -1,40 +1,43 @@
-nav,ul{
+nav, ul {
     display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Spread content between start and end */
 }
-li{
-    list-style-type: none;
-    /* padding-left: 59px;
-    padding-right: 0px; */
-}
-ul{
+
+ul {
     gap: 34px;
-    /* padding-left: 80px; */
+    padding-left: 0; 
+    margin-right: auto; 
 }
-nav{
+
+li {
+    list-style-type: none;
+}
+
+nav {
     background-color: rgb(27, 26, 26);
-    padding: 225px;
+    padding: 10px 20px; /* Adjust the padding for better layout */
     position: sticky;
     overflow: hidden;
     transition: 0.5s;
     font-size: 18px;
     height: 8vh;
-    
 }
 
-nav:hover{
+nav:hover {
     height: 10vh;
     font-size: 20px;
     color: red;
-
 }
 
 .navbar-links li a {
-    list-style-type: none;
-    display: flex;
-    /* gap: 1.5rem; */
     color: white;
     font-size: 18px;
     text-decoration: none;
     font-weight: bold;
-    
-  }
+}
+
+.ml-auto {
+    /* margin-left: 200px; */ 
+    margin-right: 20px; 
+}

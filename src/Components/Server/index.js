@@ -9,7 +9,6 @@ const MongoStore = require("connect-mongo");
 const DonorModel = require('./models/Donor');
 const DonorRequestModel = require('./models/DonorRequestModel'); // Import DonorRequest model
 const UserModel = require('./models/Users'); // Ensure you have UserModel imported for registration
-const AcceptedRequest = require('./models/AcceptedRequest'); // Import the model
 const NotificationModel = require('./models/Notification');
 const bcrypt = require('bcrypt');
 // Import the accepted request model
@@ -190,7 +189,7 @@ app.post('/find-donors', (req, res) => {
     .catch(err => res.status(500).json({ error: err.message }));
 });
 
-// Request blood route
+// Request blood 
 app.post('/request-blood', async (req, res) => {
   // console.log(req.body + " From Requests Page");
 

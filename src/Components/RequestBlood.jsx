@@ -30,6 +30,7 @@ const RequestBlood = () => {
           params: { userName }, // Sending userName instead of userEmail
           withCredentials: true,
         });
+        console.log("Fetching user details")
         setRequests(response.data);
       } catch (error) {
         console.log('Error fetching requests:', error);

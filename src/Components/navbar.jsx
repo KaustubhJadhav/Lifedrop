@@ -56,7 +56,7 @@ const Navbar = () => {
             <>
               <li className="nav-item">
                 <Link className="nav-link" to="/home">
-                  Home  
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
@@ -75,6 +75,11 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/bloodbanks">
+                  Blood Banks
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/about">
                   About Us
                 </Link>
@@ -89,7 +94,7 @@ const Navbar = () => {
         </ul>
         <div className="ml-auto">
           {isLoggedin ? (
-            <Link to="/" onClick={Logout} className="btn btn-outline-danger">
+            <Link to="/" onClick={Logout} className="btn btn-outline-danger ml-3 mr-3">
               Logout
             </Link>
           ) : (

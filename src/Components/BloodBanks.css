@@ -1,0 +1,14 @@
+.bloodbanks-container {
+    background-color: black; /* Black background */
+    color: white; /* White text for contrast */
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+    /* text-align: center; */
+  }
+
+.map-container {
+    background-color: black; /* Black background */
+    color: white; 
+    border-radius: 2px;
+    border-color: white;
+  }

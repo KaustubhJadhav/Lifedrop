@@ -19,6 +19,7 @@ const HomePage = lazy(() => import('./Components/HomePage'));
 const MainDashboard = lazy(() => import('./Components/MainDashboard'));
 const Login = lazy(() => import('./Components/Login'));
 const SignUp = lazy(() => import('./Components/SignUp'));
+const BloodBanks = lazy(() => import('./Components/BloodBanks'));
 
 const ProtectedRoute = ({ element }) => {
   const isLoggedin = React.useContext(IsLoggedinContext);
@@ -71,6 +72,7 @@ function App() {
             <Route path='/about' element={<ProtectedRoute element={<Suspense fallback={<div>Loading...</div>}><About /></Suspense>} />} />
             <Route path='/findDonors' element={<ProtectedRoute element={<Suspense fallback={<div>Loading...</div>}><FindDonors /></Suspense>} />} />
             <Route path='/dashboard' element={<ProtectedRoute element={<Suspense fallback={<div>Loading...</div>}><MainDashboard /></Suspense>} />} />
+            <Route path='/bloodbanks' element={<ProtectedRoute element={<Suspense fallback={<div>Loading...</div>}><BloodBanks /></Suspense>} />} />
           </Routes>
         </BrowserRouter>
       </SetIsLoggedinContext.Provider>
