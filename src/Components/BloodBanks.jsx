@@ -22,6 +22,12 @@ const BloodBanks = () => {
     { lat: 18.507211897859502, lng: 73.82021686499901, name: "Sahiyadari Speciality Hospital Blood Bank", contact: "02025403232" },
     { lat: 18.463886641531754, lng: 73.85663150244973, name: "Emergency Blood Bank", contact: "NA" },
     { lat: 18.513204888924516, lng: 73.84205950244973, name: "Acharya Anandrushiji Blood Bank", contact: "02024537627" },
+    { lat: 18.50981285753866,  lng: 73.79022142087669,  name: "Borse Nursing Home" },
+    { lat: 18.50899156275135,  lng: 73.79217013824088,  name: "Capital Hospital" },
+    { lat: 18.504024941881998, lng: 73.80775512035657,  name: "Shankarrao Dhondiba Sutar Multi-speciality Hospital" },
+    { lat: 18.496873905169586, lng: 73.81249915810088,  name: "Deoyani Multi Speciality Hospital" },
+    { lat: 18.495325136536604, lng: 73.81346882750806,  name: "Shashwat Hospital Kothrud" },
+    { lat: 18.50282685440805,  lng: 73.83296428644292,  name: "Deenanath Mangeshkar Hospital and Research Center" },
   ];
 
   return (<>
