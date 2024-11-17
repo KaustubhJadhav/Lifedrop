@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# LifeDrop: A Blood Donation Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+LifeDrop is a web-based platform that bridges the gap between blood donors and recipients. The application allows recipients to locate donors, send requests, track their status, and view nearby blood banks on a map. Built with React, MongoDB, and Express, LifeDrop aims to simplify the process of finding blood donors and saving lives.
 
-## Available Scripts
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🗺️ Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Dashboard
+![{845F45B5-DEBF-4920-BD7D-719CF4F3D8FC}](https://github.com/user-attachments/assets/eaab153d-ca65-4d53-b7cd-e0b1af8ef2a8)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### Find Donors
+![{EE2A7694-E0A4-4A33-BED0-6FC00D6F9AEE}](https://github.com/user-attachments/assets/83a9bcfd-6400-4ba4-a496-e921f64b7c6a)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
+### Blood Bank Locator
+![{E94CDDF1-8C06-4D1D-8126-46CE6A6F4AAD}](https://github.com/user-attachments/assets/4e22257c-8d48-47b6-87cc-30e018b1a813)
 
-### `npm run build`
+---
+### Requests Page
+![{FE47EA3C-27D2-40C9-9A79-F8D2C5646AB3}](https://github.com/user-attachments/assets/abbee221-fe73-4ad8-b62d-76c92badf121)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Donor Search**: Easily find blood donors based on blood type.
+- **Request Management**: Send blood requests, track their status (pending, accepted, rejected), and receive real-time notifications.
+- **Blood Bank Locator**: View nearby blood banks on an interactive map with Leaflet.
+- **Secure Authentication**: Users can securely register and log in using JWT-based authentication.
+- **Responsive Design**: A user-friendly interface optimized for all devices.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🛠️ Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Frontend**: React JS, Bootstrap, Leaflet
+- **Backend**: Node.js, Express
+- **Database**: MongoDB
+- **Authentication**: JSON Web Token (JWT)
+- **Mapping**: Leaflet with custom markers
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📖 How to Run the Project Locally
 
-## Learn More
+### Prerequisites
+Make sure you have the following installed:
+- Node.js (v14 or above)
+- MongoDB
+- Git
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📋 Project Documentation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 1.1 Existing System
+The current methods for managing blood donation are outdated, involving manual communication and physical record-keeping. These approaches often lead to inefficiencies and delays, particularly in emergency situations.
 
-### Code Splitting
+### 1.2 Problem Definition - Need for Computerization
+There is an urgent need to digitize the process of blood donation to save time, reduce manual errors, and improve accessibility. A computerized system can bridge the gap between donors and recipients, enabling quicker responses in emergencies.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 2.1 Proposed System
+LifeDrop offers a streamlined and efficient way to connect blood donors and recipients. It provides an intuitive interface for managing requests, notifying users of status updates, and locating nearby blood banks using interactive maps.
 
-### Analyzing the Bundle Size
+### 2.2 Objectives of the System
+- Facilitate seamless communication between donors and recipients.
+- Provide a platform for quick and efficient blood request management.
+- Enable users to view and connect with nearby blood banks on a map.
+- Ensure secure user authentication and data handling.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 2.3 User Requirements
+- **Donors**: Ability to register and accept/reject blood requests.
+- **Recipients**: Facility to search for donors, send requests, and track their status.
+- **Admin**: Manage the database of donors, recipients, and blood bank locations.
 
-### Making a Progressive Web App
+### 2.4 Operating Environment
+**Hardware**:
+- Minimum 4GB RAM and 64GB storage.
+- A device capable of running a modern web browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Software**:
+- Node.js (v14 or above)
+- MongoDB
+- React JS
+- Browser (e.g., Chrome, Firefox)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📑 User Manual
 
-### Deployment
+### 4.1 Overview
+- Users can register or log in to access the features.
+- Recipients can search for donors by blood type and send requests.
+- Donors can view, accept, or reject requests sent to them.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 4.2 Menu Explanation
+- **Home**: View a welcome message and system overview.
+- **Find Donors**: Search for donors and send blood requests.
+- **My Requests**: View and manage the status of requests.
+- **Blood Banks**: Locate nearby blood banks using Leaflet maps.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🌟 If you find this project helpful, please give it a ⭐ and share it with others!
+
